@@ -2,7 +2,7 @@
   "rewrites": [{ "source": "/api/(.*)", "destination": "/api" }],
   "headers": [
     {
-      "source": "/api/AF1QipNu8KWJ3qqmeNAETY6RwHS_7knaETkIPS-1Aa2eIYRZkamaZ3_NjduOBI7xsfA_aQ?key=Qk0yZlFvUnRSdXQ0WnBIb3dmRy1hMDdwRi1Udml3",
+      "source": "/api/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
