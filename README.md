@@ -4,8 +4,8 @@ This is an Express node.js server built to be hosted on Vercel to act as an serv
 
 <h3>Upload/build the server on Vercel</h3>
 <ol>
-<li>Clone the repo</li>
-<li>Upload the repo to be a new vercel project</li>
+<li>Fork the repo</li>
+<li>Connect the repo to be a new vercel project with whatever name you want</li>
 
 </ol>
 <h3>Make Calls to the API</h3>
@@ -13,7 +13,7 @@ This is an Express node.js server built to be hosted on Vercel to act as an serv
   <li>Make a GET request to {yourverceldomainhere}/api/{shortAlbumURL}</li>
   <li>The shortAlbumURL is obtained as follows:</li>
   <ul>
-    <li>Your full public google photos album should have a long url that looks like this: https://photos.google.com/share/lotsoflettersandnumbers123123?key=keyhere
+    <li>Your full public google photos album should have a long url that looks something like this: https://photos.google.com/share/lotsoflettersandnumbers123123?key=keyhere
 </li>
 <li>Cut out only the the stuff after the 'share/' part. Use this as the endpoint of the /api/ path </li>
   </ul>
@@ -25,7 +25,6 @@ This is an Express node.js server built to be hosted on Vercel to act as an serv
 <li>node.js</li>
       <li>Express</li>
       <li>Axios</li>
-    
     <li>Cheerio</li>
     <li>CORS</li>
 
