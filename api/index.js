@@ -4,28 +4,25 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const { html } = require("cheerio");
 
 app.use(cors());
 app.use(bodyParser.json());
 
-let port = process.env.PORT || 3000;
-
-app.post("/api", async (req, res) => {
-  let albumURL = req.body.name;
-  //console.log("file: index.js ~ line 15 ~ app.post ~ albumURL", albumURL);
-
+app.get("/api/:url", async (req, res) => {
+  const googleFront = "https://photos.google.com/share/";
+  let albumlink = req.params.url;
+  let albumkey = req.query.key;
+  let fullAlbumURL = googleFront + albumlink + "?key=" + albumkey;
   const getPage = await axios
-    .get(albumURL)
+    .get(fullAlbumURL)
     .then((data) => {
       let htmldata = data.data;
-      //console.log("file: index.js ~ line 15 ~ getPage ~ htmldata", htmldata);
       const $ = cheerio.load(htmldata);
       let images = $("img");
-      //console.log("file: index.js ~ line 18 ~ getPage ~ images", images);
       let imgJSON = [];
 
       for (let i = 0; i < images.length; i++) {
-        //console.log(images[i]);
         if (images[i].attribs.class == "hKgQud") {
           let fullSrc = images[i].attribs.src;
           let shortSrc = fullSrc.split("=")[0];
@@ -41,7 +38,7 @@ app.post("/api", async (req, res) => {
         return res.status(500).send({
           message:
             "Could not connect to Google Photos album. Please check that the Google Photos Album is public and shared",
-          attemptedURL: albumURL,
+          attemptedURL: fullAlbumURL,
         });
       }
     })
@@ -49,7 +46,7 @@ app.post("/api", async (req, res) => {
       console.log("Could not connect to Google Photos album", err);
     });
 });
-
+let port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log("App started on ", port);
 });
