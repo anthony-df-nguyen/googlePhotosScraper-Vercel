@@ -20,9 +20,6 @@ let setCache = function (req, res, next) {
   // remember to call next() to pass on the request
   next();
 };
-
-// now call the new middleware function in your app
-
 app.use(setCache);
 
 app.get("/api/:url", async (req, res) => {

@@ -1,5 +1,6 @@
 # googlephotosscraper/vercel
-This is an Express node.js server built to be hosted on Vercel to act as an API that scrapes a public google photos album and return all image urls back as json data. 
+
+This is an Express node.js server built to be hosted on Vercel to act as an serverless function/API that scrapes a public google photos album and return all image urls back as json data. Vercel serverless function requires the entry point JS files to be located in the '/api' folder.
 
 <h3>Upload/build the server on Vercel</h3>
 <ol>
@@ -7,18 +8,24 @@ This is an Express node.js server built to be hosted on Vercel to act as an API 
 <li>Upload the repo to be a new vercel project</li>
 
 </ol>
-<h3>Make Calls to the API from the client-side</h3>
-<p>The postAPI.js file contains the template code to use on a client side JS file to make a POST request to the vercel API.</p>
+<h3>Make Calls to the API</h3>
 <ol>
-<li>  In the 'albumURL' object, paste your desired googlephoto album URL (must be a public/shared album) for the 'name' field.  Then change the fetch URL from localhost:3000 to your vercel domain name with /api at the end </li>
-<li>If successful, the API will provide a json response of all image urls</li>
+  <li>Make a GET request to {yourverceldomainhere}/api/{shortAlbumURL}</li>
+  <li>The shortAlbumURL is obtained as follows:</li>
+  <ul>
+    <li>Your full public google photos album should have a long url that looks like this: https://photos.google.com/share/lotsoflettersandnumbers123123?key=keyhere
+</li>
+<li>Cut out only the the stuff after the 'share/' part. Use this as the endpoint of the /api/ path </li>
+  </ul>
+  <li>If you do it correctly, the application should return a json that displays the URLs of all the pictures</li>
 </ol>
 
 <h3>Dependencies</h3>
-<ul>      <li>node.js</li>
-        <li>Express</li>
-  <li>Axios</li>
-    <li>Body Parser</li>
+<ul>
+<li>node.js</li>
+      <li>Express</li>
+      <li>Axios</li>
+    
     <li>Cheerio</li>
     <li>CORS</li>
 
