@@ -28,7 +28,7 @@ app.post("/api", async (req, res) => {
         //console.log(images[i]);
         if (images[i].attribs.class == "hKgQud") {
           let fullSrc = images[i].attribs.src;
-          let shortSrc = fullSrc.replace("=w108-h72-no", "");
+          let shortSrc = fullSrc.split("=")[0];
           imgJSON.push({
             src: shortSrc,
           });
