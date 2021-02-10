@@ -39,14 +39,22 @@ app.get("/api/:url", async (req, res) => {
         if (images[i].attribs.class == "hKgQud") {
           let fullSrc = images[i].attribs.src;
           let shortSrc = fullSrc.split("=")[0];
+          let medResSrc = `${shortSrc}=w1366-h768`;
+          let hiResSrc = `${shortSrc}=w2560-h1440`;
           imgJSON.push({
-            src: shortSrc,
+            lowRes: shortSrc,
+            medRes: medResSrc,
+            hiRes: hiResSrc,
           });
         }
       }
       if (imgJSON.length > 0) {
         res.type("application/json");
-        //console.log("About to send response");
+        console.log(
+          "Succesfully scraped img URLs from ",
+          fullAlbumURL,
+          " and created JSON file"
+        );
         res.json(imgJSON);
       } else {
         return res.status(500).send({
