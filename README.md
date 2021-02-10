@@ -24,7 +24,7 @@ Example:
 <ol>
 <li>Fork the repo</li>
 
-<li>Connect the repo to be a new [https://vercel.com/](Vercel) project with whatever name you want</li>
+<li>Connect the repo to be a new https://vercel.com/ project with whatever name you want</li>
 <li>Extra: Vercel.json file: this file has some parameters established for the Vercel environment to redirect traffic to the /api root (to run the sole index.js app) as well as set up caching for the response. You can ignore this if you don't want to change anything
 </li>
 <li>Your API endpoint should be live and working
